@@ -33,4 +33,18 @@ public class WebSocketTextFrameHandler extends SimpleChannelInboundHandler<TextW
         super.channelInactive(ctx);
         LogUtil.log(TAG , "channelInactive " + ctx.channel().remoteAddress());
     }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
+        LogUtil.log(TAG , "exceptionCaught "
+                + ctx.channel().remoteAddress()
+                +" " + cause.getMessage());
+    }
+
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        super.handlerRemoved(ctx);
+        LogUtil.log(TAG , "handlerRemoved " + ctx.channel().remoteAddress());
+    }
 }
